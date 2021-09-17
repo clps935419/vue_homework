@@ -35,12 +35,18 @@
             </li>
             <li>
                 <div class="footer_list-title">Fast access</div>
-                <a href="" class="footer_btn">Questions?</a>
+                <div class="footer_list">
+                    <a href="" class="footer_btn">Questions?</a>
                 <a href="" class="footer_btn">Settings</a>
+                </div>
+                
             </li>
             <li>
                 <div class="footer_list-title">Language</div>
-                <select name="" id=""></select>
+                <div class="footer_list">
+                    <select name="" id=""></select>
+
+                </div>
             </li>
         </ul>
     </footer>
@@ -60,10 +66,19 @@
             background-image: url('~@/assets/img/footer/footer_logo.png') ;
             background-repeat: no-repeat;
         }
+        &_list{
+            padding-top: 50px;
+        }
+        &_list-title{
+            position: absolute;
+            top: 0;
+        }
         >ul{
             display: flex;
             >li{
                 margin-left: 69px;
+                position: relative;
+                
             }
             a{
                 text-decoration: none;
