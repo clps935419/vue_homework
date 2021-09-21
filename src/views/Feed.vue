@@ -1,7 +1,27 @@
 
 <script>
+import { computed, onMounted } from '@vue/runtime-core'
+import { useStore } from 'vuex'
 export default {
-
+  setup(){
+    const store = useStore();
+    const userObj = computed(()=>{
+      return store.getters['Feed/getUser']
+    })
+    // const init = ()=>{
+    //   store.dispatch('Feed/handleInit').then((res)=>{
+    //     console.log("--*--*-*",
+    //       store.getters['Feed/getUser']
+    //     );
+    //   });
+    // }
+    onMounted(()=>{
+      // init();
+    })
+    return{
+      userObj
+    }
+  }
 }
 </script>
 <template>
@@ -19,7 +39,7 @@ export default {
       </div>
     </div>
     <div class="right-area">
-
+      <h1>{{userObj.name}}</h1>
     </div>
   </div>
   

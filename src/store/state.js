@@ -1,3 +1,5 @@
-export default{
-    
-}
+export default {
+    user: {
+        name: 'bbb',
+    },
+};

@@ -1,6 +1,18 @@
 <script>
+    import {
+        useStore
+    } from 'vuex'
+    import { computed, onMounted } from '@vue/runtime-core'
     export default {
-
+        setup() {
+            const store = useStore();
+            const userObj = computed(() => {
+                return store.getters.getUser;
+            })
+            return {
+                userObj
+            }
+        }
     }
 </script>
 <template>
@@ -36,7 +48,7 @@
                 <img src="~@/assets/logo.png" alt="">
                 <div class="header_list-infor">
                     <div class="header_list-infor-name">
-                        test
+                        {{userObj.name}}
                     </div>
                     <div class="header_list-infor-time">
                         <span>367 views today</span><i>33</i>

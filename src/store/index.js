@@ -5,6 +5,7 @@ import actions from './actions';
 import getters from './getters';
 
 import Profile from './Profile'
+import Feed from './Feed';
 
 export default createStore({
     state,
@@ -13,5 +14,6 @@ export default createStore({
     getters,
     modules: {
         Profile,
+        Feed,
     },
 });

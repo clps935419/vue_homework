@@ -1,22 +1,35 @@
 <script>
-import { onMounted } from '@vue/runtime-core';
-import { useStore } from 'vuex'
-import Footer from './components/Footer.vue';
-import Header from './components/Header.vue';
-export default {
-    components: {
-        Header,
-        Footer,
-    },
-    setup(){
-        const store = useStore();
-        onMounted(()=>{
-            console.log('-**-',store.getters['Profile/getData'])
-            store.dispatch('Profile/handleSetData','aaaaaa');
-            console.log('--',store.getters['Profile/getData'])
-        })
+    import {
+        onMounted
+    } from '@vue/runtime-core';
+    import {
+        useStore
+    } from 'vuex'
+    import Footer from './components/Footer.vue';
+    import Header from './components/Header.vue';
+    export default {
+        components: {
+            Header,
+            Footer,
+        },
+
+        setup() {
+            const store = useStore();
+            const init = () => {
+                // store.dispatch('Feed/handleInit').then((res) => {
+                //     console.log("--*--*-*",
+                //         store.getters['Feed/getUser']
+                //     );
+                // });
+                store.dispatch('getUser');
+            }
+            onMounted(() => {
+                init();
+                store.dispatch('Profile/handleSetData', 'aaaaaa');
+
+            })
+        }
     }
-}
 </script>
 <template>
     <div class="wrapper">
@@ -24,10 +37,10 @@ export default {
         <router-view></router-view>
         <Footer />
     </div>
-    
+
 </template>
 <style>
-body{
-    background: #F7F9FB;
-}
+    body {
+        background: #F7F9FB;
+    }
 </style>
