@@ -2,12 +2,17 @@
 <script>
 import { computed, onMounted } from '@vue/runtime-core'
 import { useStore } from 'vuex'
+import FeedCard from '@/components/FeedCard.vue'
 export default {
+  components: {
+    FeedCard
+  },
   setup(){
     const store = useStore();
     const userObj = computed(()=>{
       return store.getters['Feed/getUser']
     })
+    const testCard ="testcard";
     // const init = ()=>{
     //   store.dispatch('Feed/handleInit').then((res)=>{
     //     console.log("--*--*-*",
@@ -19,7 +24,8 @@ export default {
       // init();
     })
     return{
-      userObj
+      userObj,
+      testCard
     }
   }
 }
@@ -36,6 +42,7 @@ export default {
         <div class="left-area_sort-hr"></div>
         <div class="left-area_sort-content">sort by <select name="" id=""></select></div>
         <div class="left-area_sort-hr"></div>
+        <FeedCard :msg="testCard" />
       </div>
     </div>
     <div class="right-area">
