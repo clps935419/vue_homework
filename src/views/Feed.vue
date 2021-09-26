@@ -10,22 +10,19 @@ export default {
   setup(){
     const store = useStore();
     const userObj = computed(()=>{
-      return store.getters['Feed/getUser']
+      return store.getters['getUser']
     })
-    const testCard ="testcard";
-    // const init = ()=>{
-    //   store.dispatch('Feed/handleInit').then((res)=>{
-    //     console.log("--*--*-*",
-    //       store.getters['Feed/getUser']
-    //     );
-    //   });
-    // }
+    const init = ()=>{
+      store.dispatch('Feed/handleInit').then((res)=>{
+        console.log('結果--')
+        console.log('結果',store.getters['Feed/postArr'])
+      });
+    }
     onMounted(()=>{
-      // init();
+      init();
     })
     return{
-      userObj,
-      testCard
+      userObj
     }
   }
 }
@@ -42,7 +39,7 @@ export default {
         <div class="left-area_sort-hr"></div>
         <div class="left-area_sort-content">sort by <select name="" id=""></select></div>
         <div class="left-area_sort-hr"></div>
-        <FeedCard :msg="testCard" />
+        <FeedCard/>
       </div>
     </div>
     <div class="right-area">

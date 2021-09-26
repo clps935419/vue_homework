@@ -25,8 +25,6 @@
             }
             onMounted(() => {
                 init();
-                store.dispatch('Profile/handleSetData', 'aaaaaa');
-
             })
         }
     }

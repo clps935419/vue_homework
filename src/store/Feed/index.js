@@ -1,30 +1,34 @@
 import axios from "axios";
 export default {
-    namespaced:true,
+    namespaced: true,
     state: {
-        user:{
-            name:'aaa'
+        user: {
+            name: 'aaa',
         },
+        postArr: [],
     },
     mutations: {
         init(state, data) {
-            state.user = data.user;
-            console.log('user',state.user)
+            state.postArr = data.allUser;
+            console.log('state.postArr', state.postArr);
         },
     },
     actions: {
         handleInit(context, data) {
-            return axios.get('/api/my_api/my_json.json').then(function(response) {
-                // handle success
-                context.commit('init', response.data);
-                return response.data;
-            });
+            return axios
+                .get('/api/my_api/feed_json.json')
+                .then(function(response) {
+                    console.log('res',response)
+                    // handle success
+                    context.commit('init', response.data);
+                    return response.data;
+                });
         },
     },
     getters: {
-        getUser(state) {
-            console.log('get',state.user)
-            return state.user;
+        postArr(state) {
+            console.log('getter', state.postArr);
+            return state.postArr;
         },
     },
 };

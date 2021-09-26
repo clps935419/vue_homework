@@ -1,22 +1,33 @@
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
 export default {
-    props:{
-        msg:{
-            type:String,
-            default:"預設值"
-        }
-    },
-    setup(props){
-        console.log("--",props.msg)
+    setup(){
+        const store = useStore();
+        const postArr = computed(()=>{
+            return store.getters['Feed/postArr']
+        })
         return{
-            props
+            postArr
         }
     }
 }
 </script>
 <template>
-  <h1>{{props.msg}}</h1>
+    <ul>
+        <li class="post-card" v-for="item in postArr" :key="item.name">
+            <div class="post-card_name">
+                {{item.name}}
+            </div>
+            <div class="post-card_content">
+                {{item.post}}
+            </div>
+            <div class="post-card_like-num">
+                {{item.like}}
+            </div>
+        </li>
+    </ul>
 </template>
-<style>
+<style lang="scss" scoped>
 
 </style>
