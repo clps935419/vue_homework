@@ -39,8 +39,9 @@ export default {
         <div class="left-area_sort-hr"></div>
         <div class="left-area_sort-content">sort by <select name="" id=""></select></div>
         <div class="left-area_sort-hr"></div>
-        <FeedCard/>
       </div>
+      <FeedCard/>
+
     </div>
     <div class="right-area">
       <h1>{{userObj.name}}</h1>
@@ -86,6 +87,7 @@ export default {
     &_sort-ele{
       display: flex;
       align-items: center;
+      margin-bottom: 33px;
     }
     &_sort-hr{
       flex: 1;
