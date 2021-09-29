@@ -45,7 +45,7 @@
         </div>
         <div class="header_right-area">
             <div class="header_profile">
-                <img src="~@/assets/logo.png" alt="">
+                <img :src="userObj.img" alt="">
                 <div class="header_list-infor">
                     <div class="header_list-infor-name">
                         {{userObj.name}}
@@ -172,10 +172,10 @@
             align-items: center;
 
             img {
-                width: 80px;
-                height: 90%;
+                width: 42px;
+                height: 42px;
                 border-radius: 50%;
-                margin-right: 20px;
+                margin-right: 15px;
             }
         }
 

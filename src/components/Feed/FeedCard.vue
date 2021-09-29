@@ -23,7 +23,7 @@ export default {
             
             <div class="post-card_mid">
                 <div class="post-card_name-area">
-                    <img src="" alt="">
+                    <img :src="item.img" alt="">
                     <div>
                         <div>{{item.name}}</div>
                         <div>{{item.infor}}</div>
@@ -79,6 +79,12 @@ export default {
     &_name-area{
         display: flex;
         margin-bottom: 15px;
+        img{
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
     }
     &_like-num{
         padding: 15px 30px;

@@ -2,10 +2,12 @@
 <script>
 import { computed, onMounted } from '@vue/runtime-core'
 import { useStore } from 'vuex'
-import FeedCard from '@/components/FeedCard.vue'
+import FeedCard from '@/components/Feed/FeedCard.vue'
+import FeedPersonCard from '@/components/Feed/FeedPersonCard.vue'
 export default {
   components: {
-    FeedCard
+    FeedCard,
+    FeedPersonCard
   },
   setup(){
     const store = useStore();
@@ -44,7 +46,11 @@ export default {
 
     </div>
     <div class="right-area">
-      <h1>{{userObj.name}}</h1>
+      <FeedPersonCard/>
+      <div class="right-area_write-new-artical">
+        <a href="">write new artical</a>
+      </div>
+      
     </div>
   </div>
   
@@ -100,5 +106,24 @@ export default {
   }
   .right-area{
     width: 30%;
+    &_write-new-artical{
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      a{
+        display: block;
+        text-decoration: none;
+        height: 32px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, #0077B5 0%, #0E6795 100%);
+        width: 80%;
+        font-family: Gotham Pro;
+        line-height: 30px;
+        text-align: center;
+        color: #FFFFFF;
+      }
+    }
   }
 </style>
