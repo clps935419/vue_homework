@@ -4,6 +4,7 @@ export default {
     state: {
         user: {
             name: 'aaa',
+            group: [],
         },
         postArr: [],
     },
@@ -18,7 +19,7 @@ export default {
             return axios
                 .get('/api/my_api/feed_json.json')
                 .then(function(response) {
-                    console.log('res',response)
+                    console.log('res', response);
                     // handle success
                     context.commit('init', response.data);
                     return response.data;

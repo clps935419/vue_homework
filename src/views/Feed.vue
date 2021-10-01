@@ -4,10 +4,12 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { useStore } from 'vuex'
 import FeedCard from '@/components/Feed/FeedCard.vue'
 import FeedPersonCard from '@/components/Feed/FeedPersonCard.vue'
+import FeedGroup from '@/components/Feed/FeedGroup.vue'
 export default {
   components: {
     FeedCard,
-    FeedPersonCard
+    FeedPersonCard,
+    FeedGroup
   },
   setup(){
     const store = useStore();
@@ -50,7 +52,7 @@ export default {
       <div class="right-area_write-new-artical">
         <a href="">write new artical</a>
       </div>
-      
+      <FeedGroup/>
     </div>
   </div>
   
@@ -112,13 +114,14 @@ export default {
       justify-content: center;
       align-items: center;
       background-color: white;
+      padding: 30px 20px;
+      margin-bottom: 20px;
       a{
         display: block;
         text-decoration: none;
-        height: 32px;
         border-radius: 4px;
         background: linear-gradient(180deg, #0077B5 0%, #0E6795 100%);
-        width: 80%;
+        width: 100%;
         font-family: Gotham Pro;
         line-height: 30px;
         text-align: center;
