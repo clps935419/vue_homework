@@ -5,11 +5,16 @@ import { useStore } from 'vuex'
 import FeedCard from '@/components/Feed/FeedCard.vue'
 import FeedPersonCard from '@/components/Feed/FeedPersonCard.vue'
 import FeedGroup from '@/components/Feed/FeedGroup.vue'
+import FeedHashtag from '@/components/Feed/FeedHashtag.vue'
+import FeedTrending from '@/components/Feed/FeedTrending.vue'
+
 export default {
   components: {
     FeedCard,
     FeedPersonCard,
-    FeedGroup
+    FeedGroup,
+    FeedHashtag,
+    FeedTrending
   },
   setup(){
     const store = useStore();
@@ -18,7 +23,6 @@ export default {
     })
     const init = ()=>{
       store.dispatch('Feed/handleInit').then((res)=>{
-        console.log('結果--')
         console.log('結果',store.getters['Feed/postArr'])
       });
     }
@@ -53,6 +57,8 @@ export default {
         <a href="">write new artical</a>
       </div>
       <FeedGroup/>
+      <FeedHashtag/>
+      <FeedTrending/>
     </div>
   </div>
   

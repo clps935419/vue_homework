@@ -13,6 +13,18 @@ export default {
             state.postArr = data.allUser;
             console.log('state.postArr', state.postArr);
         },
+        addThumb(state, data) {
+            console.warn('data',data.active);
+            state.postArr.forEach((item) => {
+                if(item.name === data.name){
+                    if(data.active){
+                        item.like = parseInt(item.like) + 1;
+                    }else{
+                        item.like = parseInt(item.like) - 1;
+                    }
+                }
+            });
+        },
     },
     actions: {
         handleInit(context, data) {
@@ -24,6 +36,9 @@ export default {
                     context.commit('init', response.data);
                     return response.data;
                 });
+        },
+        handleThumbAdd(context,data) {
+            context.commit('addThumb', data);
         },
     },
     getters: {

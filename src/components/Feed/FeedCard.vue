@@ -7,8 +7,22 @@ export default {
         const postArr = computed(()=>{
             return store.getters['Feed/postArr']
         })
+        const isThumbs= (e)=>{
+            console.log('this--',e.active)
+
+            if(e.active === undefined){
+                e.active = true;
+                store.dispatch('Feed/handleThumbAdd',e)
+                return;
+            }
+            e.active = !e.active;
+            store.dispatch('Feed/handleThumbAdd',e)
+            console.log('this',e.active)
+
+        }
         return{
-            postArr
+            postArr,
+             isThumbs
         }
     }
 }
@@ -36,7 +50,7 @@ export default {
             <div class="post-card_footer">
                 <div>
                     <div class="post-card_like-num">
-                        <span></span>
+                        <span @click="isThumbs(item)" :class="{active:item.active}"></span>
                         {{item.like}}
                     </div>
                     <div class="post-card_comment-num">
@@ -56,6 +70,17 @@ export default {
     </ul>
 </template>
 <style lang="scss" scoped>
+$cardimg_url:"~@/assets/img/feed/";
+
+@mixin card-img($img) {
+    background-image: url("#{$cardimg_url}#{$img}");
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+    display: block;
+    margin-right: 5px;
+}
+
 .post-card{
     border:1px #F4F4F4 solid;
     background: #FFFFFF;
@@ -74,6 +99,7 @@ export default {
         justify-content: space-between;
         >div{
             display: flex;
+            cursor: pointer;
         }
     }
     &_name-area{
@@ -88,12 +114,27 @@ export default {
     }
     &_like-num{
         padding: 15px 30px;
+        display: flex;
+        span{
+            @include card-img("not-thumbs-up.png");
+            &.active{
+                @include card-img("thumbs-up.png");
+            }
+        }
     }
     &_comment-num{
         padding: 15px 30px;
+        display: flex;
+        span{
+            @include card-img("message-circle.png");
+        }
     }
     &_share{
         padding: 15px 30px;
+        display: flex;
+        span{
+            @include card-img("share-2.png");
+        }
 
     }
 }

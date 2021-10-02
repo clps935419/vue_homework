@@ -13,7 +13,6 @@ export default {
             isOpen.value = !isOpen.value;
         }
         const handopenText = computed(()=>{
-            console.log('sadasd',userObj.value.group.length);
             if(isOpen.value){
                 return `hide all (${userObj.value.group.length})`;
             }else{
@@ -56,6 +55,7 @@ export default {
 .feed-person-group{
     padding: 25px 30px 28px 30px;
     background:#FCFDFD;
+    margin-bottom: 20px;
     &_header{
         display: flex;
         justify-content: space-between;
