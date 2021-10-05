@@ -55,9 +55,10 @@
     .footer {
         padding: 30px 130px 0px 130px;
         background: white;
-        
+        margin-top: 20px;
         height: 215px;
         width: 100%;
+        border-top:#E7E7E7 1px solid;
         &_logo{
             width: 61px;
             height: 91px;

@@ -1,28 +1,35 @@
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import FeedCardComment from '@/components/Feed/FeedCardComment.vue'
 export default {
+    components:{
+        FeedCardComment
+    },
     setup(){
         const store = useStore();
         const postArr = computed(()=>{
             return store.getters['Feed/postArr']
+        });
+        const userObj = computed(()=>{
+            return store.getters['getUser']
         })
-        const isThumbs= (e)=>{
+        const isThumbs = (e)=>{
             console.log('this--',e.active)
-
-            if(e.active === undefined){
-                e.active = true;
-                store.dispatch('Feed/handleThumbAdd',e)
-                return;
-            }
+            
             e.active = !e.active;
             store.dispatch('Feed/handleThumbAdd',e)
             console.log('this',e.active)
-
+    
+        }
+        const isShowComment =(e)=>{
+            e.isShowComment = !e.isShowComment;
         }
         return{
             postArr,
-             isThumbs
+            isThumbs,
+            isShowComment,
+            userObj
         }
     }
 }
@@ -53,7 +60,7 @@ export default {
                         <span @click="isThumbs(item)" :class="{active:item.active}"></span>
                         {{item.like}}
                     </div>
-                    <div class="post-card_comment-num">
+                    <div class="post-card_comment-num" @click="isShowComment(item)">
                         <span></span>
                         {{item.comment.length}}
                     </div>
@@ -65,7 +72,7 @@ export default {
                     </div>
                 </div>
             </div>
-            
+            <FeedCardComment :user="userObj.name" :postUser="item.name" :msgArr="item.comment" v-if="item.isShowComment" />
         </li>
     </ul>
 </template>
@@ -97,6 +104,8 @@ $cardimg_url:"~@/assets/img/feed/";
     &_footer{
         display: flex;
         justify-content: space-between;
+        border-bottom: 1px solid #d3d3d3;
+
         >div{
             display: flex;
             cursor: pointer;

@@ -10,18 +10,33 @@ export default {
     },
     mutations: {
         init(state, data) {
-            state.postArr = data.allUser;
-            console.log('state.postArr', state.postArr);
+            let newData = data.allUser.map((item) => {
+                item.active = false;
+                item.isShowComment = false;
+                return item;
+            });
+
+            state.postArr = newData;
         },
         addThumb(state, data) {
-            console.warn('data',data.active);
             state.postArr.forEach((item) => {
-                if(item.name === data.name){
-                    if(data.active){
+                if (item.name === data.name) {
+                    if (data.active) {
                         item.like = parseInt(item.like) + 1;
-                    }else{
+                    } else {
                         item.like = parseInt(item.like) - 1;
                     }
+                }
+            });
+        },
+        addPost(state, data) {
+            console.log('dadta-',data)
+            state.postArr.forEach((item) => {
+                console.log('----', item.name, data.postUser);
+
+                if (item.name === data.postUser) {
+                    item.comment.push(data);
+                    console.warn('it', item.comment);
                 }
             });
         },
@@ -37,8 +52,11 @@ export default {
                     return response.data;
                 });
         },
-        handleThumbAdd(context,data) {
+        handleThumbAdd(context, data) {
             context.commit('addThumb', data);
+        },
+        handlePostContent(context, data) {
+            context.commit('addPost', data);
         },
     },
     getters: {

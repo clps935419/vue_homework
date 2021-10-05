@@ -7,6 +7,7 @@ export default {
         const trending = computed(()=>{
             return store.getters['getUser'].trending
         })
+        
         return{
             trending
         }
