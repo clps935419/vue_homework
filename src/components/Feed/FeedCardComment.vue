@@ -3,7 +3,7 @@ import { useStore } from "vuex";
 export default {
     props:{
         user:{
-            type:String
+            type:Object
         },
         postUser:{
             type:String
@@ -20,8 +20,8 @@ export default {
         const store = useStore();
         console.log('props',props)
         const setPost = (e)=>{
-            const $post = e.target.previousElementSibling;
-            const userName = props.user;
+            const $post = e.target;
+            const userName = props.user.name;
             const postName = props.postUser;
             const postObj = {
                 name:userName,
@@ -30,6 +30,7 @@ export default {
                 img: "https://source.unsplash.com/user/alex"
             }
             store.dispatch('Feed/handlePostContent',postObj);
+            $post.value="";
         }
         return{
             props,
@@ -42,15 +43,17 @@ export default {
   <ul class="card-comment">
         <li class="card-comment-list" v-for="item in props.msgArr" :key="item.name">
             <div class="card-comment-list_left">
-                <div>{{ item.name }}</div>
                 <img :src="item.img" alt="">
             </div>
-            <div class="card-comment-list_right">{{ item.content }}</div>
+            <div class="card-comment-list_right">
+                <div class="card-comment-list_right-name">{{ item.name }}</div>
+                <div>{{ item.content }}</div>
+            </div>
         </li>
   </ul>
   <div class="card-comment-post">
-      <input type="text" class="postVal">
-      <input type="button" value="post" @click="setPost">  
+      <img :src="props.user.img" alt="">
+      <input type="text" class="postVal" @keyup.enter="setPost">
   </div>
 </template>
 <style lang="scss" scoped>
@@ -63,8 +66,7 @@ export default {
 
     &_left{
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
         margin-right: 20px;
         >div{
             margin-bottom: 5px;
@@ -78,10 +80,31 @@ export default {
     }
     &_right{
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        &-name{
+            color: #0275B1;
+            margin-bottom: 5px;
+        }
     }
 }
 .card-comment-post{
     padding: 15px 30px;
+    display: flex;
+    img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+    input{
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        background: #ededed;
+        padding: 0 10px;
+        &:focus{
+            outline: none;
+        }
+    }
 }
 </style>

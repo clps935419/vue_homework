@@ -72,7 +72,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <FeedCardComment :user="userObj.name" :postUser="item.name" :msgArr="item.comment" v-if="item.isShowComment" />
+            <FeedCardComment :user="userObj" :postUser="item.name" :msgArr="item.comment" v-if="item.isShowComment" />
         </li>
     </ul>
 </template>
