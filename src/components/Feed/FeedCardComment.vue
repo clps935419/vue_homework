@@ -53,7 +53,7 @@ export default {
   </ul>
   <div class="card-comment-post">
       <img :src="props.user.img" alt="">
-      <input type="text" class="postVal" @keyup.enter="setPost">
+      <input type="text" class="postVal" @keyup.enter="setPost" placeholder="type... then enter">
   </div>
 </template>
 <style lang="scss" scoped>

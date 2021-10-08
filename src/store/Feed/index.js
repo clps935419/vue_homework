@@ -9,6 +9,7 @@ export default {
         postArr: [],
     },
     mutations: {
+        //所有貼文
         init(state, data) {
             let newData = data.allUser.map((item) => {
                 item.active = false;
@@ -18,6 +19,7 @@ export default {
 
             state.postArr = newData;
         },
+        //按讚+1-1
         addThumb(state, data) {
             state.postArr.forEach((item) => {
                 if (item.name === data.name) {
@@ -29,8 +31,9 @@ export default {
                 }
             });
         },
+        //評論區增加留言
         addPost(state, data) {
-            console.log('dadta-',data)
+            console.log('dadta-', data);
             state.postArr.forEach((item) => {
                 console.log('----', item.name, data.postUser);
 
@@ -39,6 +42,18 @@ export default {
                     console.warn('it', item.comment);
                 }
             });
+        },
+        //貼文時間排序
+        PostArrSort(state,data){
+            const sortArr = state.postArr.sort((a,b)=>{
+            if (data ==="new"){
+                return new Date(b.date) - new Date(a.date);
+            }else{
+                return new Date(a.date) - new Date(b.date);
+            }
+            });
+            state.postArr = sortArr;
+            console.warn('陣列', state.postArr);
         },
     },
     actions: {
@@ -57,6 +72,12 @@ export default {
         },
         handlePostContent(context, data) {
             context.commit('addPost', data);
+        },
+        handlePostArrSort(context, data) {
+            if(data===''){
+                return;
+            }
+            context.commit('PostArrSort', data);
         },
     },
     getters: {

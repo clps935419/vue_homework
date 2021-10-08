@@ -1,6 +1,6 @@
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
+import { ref,computed, onMounted, watch } from '@vue/runtime-core'
 import { useStore } from 'vuex'
 import FeedCard from '@/components/Feed/FeedCard.vue'
 import FeedPersonCard from '@/components/Feed/FeedPersonCard.vue'
@@ -17,9 +17,14 @@ export default {
     FeedTrending
   },
   setup(){
+    const sortActive = ref('');
     const store = useStore();
     const userObj = computed(()=>{
       return store.getters['getUser']
+    });
+    watch(sortActive,(val)=>{
+      console.log('val',val)
+      store.dispatch('Feed/handlePostArrSort',val);
     })
     const init = ()=>{
       store.dispatch('Feed/handleInit').then((res)=>{
@@ -30,7 +35,8 @@ export default {
       init();
     })
     return{
-      userObj
+      userObj,
+      sortActive
     }
   }
 }
@@ -45,7 +51,13 @@ export default {
       </div>
       <div class="left-area_sort-ele">
         <div class="left-area_sort-hr"></div>
-        <div class="left-area_sort-content">sort by <select name="" id=""></select></div>
+        <div class="left-area_sort-content">
+          sort by 
+          <select name="" id="feed-sort-select" v-model="sortActive">
+            <option value="new">New</option>
+            <option value="old">old</option>
+          </select>
+        </div>
         <div class="left-area_sort-hr"></div>
       </div>
       <FeedCard/>
