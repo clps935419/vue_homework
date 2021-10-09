@@ -81,6 +81,7 @@
         background: white;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
         border-bottom: 1px solid #e2e2e2;
+        margin-bottom: 40px;
 
         &_left-area,
         &_right-area {

@@ -36,7 +36,7 @@ export default {
 </script>
 <template>
     <ul>
-        <li class="post-card" v-for="item in postArr" :key="item.name">
+        <li class="post-card" v-for="item in postArr" :key="item.date">
             <div class="post-card_header">
                 <div>test like this</div>
                 <div>...</div>

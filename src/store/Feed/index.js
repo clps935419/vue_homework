@@ -44,16 +44,30 @@ export default {
             });
         },
         //貼文時間排序
-        PostArrSort(state,data){
-            const sortArr = state.postArr.sort((a,b)=>{
-            if (data ==="new"){
-                return new Date(b.date) - new Date(a.date);
-            }else{
-                return new Date(a.date) - new Date(b.date);
-            }
+        postArrSort(state, data) {
+            const sortArr = state.postArr.sort((a, b) => {
+                if (data === 'new') {
+                    return new Date(b.date) - new Date(a.date);
+                } else {
+                    return new Date(a.date) - new Date(b.date);
+                }
             });
             state.postArr = sortArr;
             console.warn('陣列', state.postArr);
+        },
+        //增加貼文
+        postArrAdd(state, data) {
+            console.warn('增加',data)
+            const tmpData = {
+                name: 'Leonard',
+                infor: 'IOS developer',
+                post: data,
+                like: '0',
+                comment: [],
+                img: 'https://source.unsplash.com/user/leonard',
+                date: Date.now(),
+            };
+            state.postArr.unshift(tmpData);
         },
     },
     actions: {
@@ -74,10 +88,13 @@ export default {
             context.commit('addPost', data);
         },
         handlePostArrSort(context, data) {
-            if(data===''){
+            if (data === '') {
                 return;
             }
-            context.commit('PostArrSort', data);
+            context.commit('postArrSort', data);
+        },
+        handleAddPost(context, data) {
+            context.commit('postArrAdd', data);
         },
     },
     getters: {

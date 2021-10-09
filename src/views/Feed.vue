@@ -23,7 +23,6 @@ export default {
       return store.getters['getUser']
     });
     watch(sortActive,(val)=>{
-      console.log('val',val)
       store.dispatch('Feed/handlePostArrSort',val);
     })
     const init = ()=>{
@@ -31,23 +30,33 @@ export default {
         console.log('結果',store.getters['Feed/postArr'])
       });
     }
+    const addPost = (e) =>{
+      const $post = document.getElementById('post-type-input');
+      const postVal = $post.value;
+      store.dispatch('Feed/handleAddPost',postVal);
+      $post.value = "";
+    }
     onMounted(()=>{
       init();
     })
     return{
       userObj,
-      sortActive
+      sortActive,
+      addPost
     }
   }
 }
 </script>
 <template>
-  <h1>Feed</h1>
   <div class="content">
     <div class="left-area">
       <div class="left-area_post-area">
         <div class="left-area_post-title">New post</div>
-        <input type="text" placeholder="What's on ur mind" >
+        <div class="left-area_post-type">
+          <input type="text" id="post-type-input" placeholder="What's on ur mind" >
+          <span @click="addPost"></span>
+        </div>
+        
       </div>
       <div class="left-area_sort-ele">
         <div class="left-area_sort-hr"></div>
@@ -77,6 +86,15 @@ export default {
 </template>
 
 <style lang="scss" scope>
+$cardimg_url:"~@/assets/img/feed/";
+@mixin card-img($img) {
+    background-image: url("#{$cardimg_url}#{$img}");
+    width: 26px;
+    height: 26px;
+    background-size: cover;
+    display: block;
+    margin-right: 5px;
+}
   .content{
     display: flex;
     justify-content: center;
@@ -91,10 +109,18 @@ export default {
       padding-left: 30px;
       padding: 25px 30px;
       margin-bottom: 33px;
-      input{
+    }
+    &_post-type{
+        display: flex;
+        padding-top: 21px;
+        >span{
+          @include card-img('feed-post-btn.png')
+        }
+        input{
         border: none;
         width: 100%;
         padding: 10px;
+        flex: 1;
         &:focus{
           border: none;
           outline: none !important;
@@ -103,8 +129,7 @@ export default {
           color: #18181833;
         }
       }
-
-    }
+      }
     &_post-title{
       padding-bottom: 20px;
       border-bottom: 1px solid #F4F4F4;;
