@@ -63,6 +63,7 @@ export default {
         <div class="left-area_sort-content">
           sort by 
           <select name="" id="feed-sort-select" v-model="sortActive">
+            <option value="" style="color:lightgrey;" selected disabled hidden>Choose here</option>
             <option value="new">New</option>
             <option value="old">old</option>
           </select>
@@ -171,5 +172,11 @@ $cardimg_url:"~@/assets/img/feed/";
         color: #FFFFFF;
       }
     }
+  }
+    #feed-sort-select {
+      border: none;
+      color: #0275B1;
+      background: #F7F9FB;
+      cursor: pointer;
   }
 </style>
