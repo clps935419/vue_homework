@@ -9,32 +9,32 @@ import NotFoundComponent from '@/views/NotFoundComponent.vue';
 const routes = [
     {
         path: '/', //代表首頁
-        name: 'Feed',
+        name: 'profile',
+        component: Profile,
+    },
+    {
+        path: '/feed',
+        name: 'feed',
         component: Feed,
     },
     {
-        path: '/Network',
-        name: 'Network',
+        path: '/network',
+        name: 'network',
         component: Network,
     },
     {
-        path: '/Jobs',
-        name: 'Jobs',
+        path: '/jobs',
+        name: 'jobs',
         component: Jobs,
     },
     {
-        path: '/Chats',
-        name: 'Chats',
+        path: '/chats',
+        name: 'chats',
         component: Chats,
     },
     {
-        path: '/Chats',
-        name: 'Chats',
-        component: Chats,
-    },
-    {
-        path: '/Notices',
-        name: 'Notices',
+        path: '/notices',
+        name: 'notices',
         component: Notices,
     },
     {
@@ -42,11 +42,7 @@ const routes = [
         component: NotFoundComponent,
         name: 'NotFound',
     },
-    // {
-    //     path: '/Feed',
-    //     name: 'Feed',
-    //     component: Feed,
-    // },
+    
     // {
     //     path: '/about',
     //     name: 'About',

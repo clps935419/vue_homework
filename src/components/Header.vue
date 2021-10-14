@@ -18,10 +18,12 @@
 <template>
     <header class="header">
         <div class="header_left-area">
-            <div class="header_logo"></div>
+            <div class="header_logo">
+                <router-link  to="/"></router-link>
+            </div>
             <ul class="header_nav">
                 <li>
-                    <router-link class="feed" to="/"></router-link>
+                    <router-link class="feed" to="/feed"></router-link>
                 </li>
 
                 <li>
@@ -96,6 +98,11 @@
             background-size: 100%;
             background-repeat: no-repeat;
             background-position: center;
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
         }
 
         &_nav {
