@@ -30,6 +30,7 @@ export default {
     display: flex;
     margin-top: 21px;
     align-items: flex-end;
+    margin-bottom: 30px;
     >li{
         width: 25%;
     }

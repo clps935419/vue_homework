@@ -2,11 +2,13 @@
 import { useStore } from 'vuex'
 import ProfileInforCard from '@/components/Profile/ProfileInforCard.vue'
 import ProfileNavBtn from '@/components/Profile/ProfileNavBtn.vue'
+import ProfileNavContent from '@/components/Profile/ProfileNavContent.vue'
 
 export default {
     components: {
         ProfileInforCard,
-        ProfileNavBtn
+        ProfileNavBtn,
+        ProfileNavContent
     }
 }
 </script>
@@ -15,6 +17,7 @@ export default {
     <div class="left-area">
       <ProfileInforCard/>
       <ProfileNavBtn/>
+      <ProfileNavContent/>
     </div>
     <div class="right-area">
 
