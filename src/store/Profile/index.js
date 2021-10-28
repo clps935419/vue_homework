@@ -1,22 +1,47 @@
 export default {
-    namespaced:true,
+    namespaced: true,
     state: {
         peronData: 'sss',
+        navList: [
+            {
+                name: 'Profile',
+                isActive: true,
+                data: [],
+            },
+            {
+                name: 'Activity & interests',
+                isActive: false,
+                data: [],
+            },
+            {
+                name: 'Articles',
+                isActive: false,
+                data: [],
+            },
+        ],
     },
     mutations: {
-        setData(state, data) {
-            state.peronData = data;
+        setActive(state, data) {
+            state.navList = state.navList.map((item)=>{
+                item.isActive = false;
+                console.log('data',data.name,item.name)
+                if(item.name === data.name){
+                    item.isActive = true;
+                }
+                return item;
+            }); 
         },
     },
     actions: {
-        handleSetData(context, data) {
-            console.log('進去');
-            context.commit('setData', data);
+        handleActive(context, data) {
+            //選單按鈕顯示
+            context.commit('setActive', data);
         },
     },
     getters: {
-        getData(state) {
-            return state.peronData;
+        getNavList(state) {
+            console.log('**', state.navList);
+            return state.navList;
         },
     },
 };

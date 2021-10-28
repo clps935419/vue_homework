@@ -46,6 +46,7 @@ import { useStore } from "vuex";
 </template>
 <style lang="scss" scoped>
 .profile-card{
+    box-shadow: 0px 20px 60px rgba(241, 244, 248, 0.5);
     &_bg{
         width: 100%;
         height: 180px;
@@ -55,28 +56,53 @@ import { useStore } from "vuex";
     }
     &_infor{
         display: flex;
+        background: white;
+
     }
     &_infor-content{
         display: flex;
         flex-direction: column;
+        padding-top: 25px;
+        padding-bottom: 35px;
         .name{
             display: flex;
             justify-content: space-between;
+            font-family: Gotham Pro;
+            font-size: 18px;
+            color: #181818;
+            margin-bottom: 15px;
+        }
+        .intro{
+            font-family: Gotham Pro;
+                font-size: 14px;
+                color: #181818;
+                margin-bottom: 14px;
+
         }
         .infor-btn{
+            display: flex;
+            justify-content: flex-start;
             a{
                 display: block;
                 text-decoration: none;
+                margin-right: 15px;
+                border: #0275B1 1px solid;
+                color: #0275B1 ;
+                width: 170px;
+                text-align: center;
+                padding-top:11px;
+                padding-bottom: 10px;
             }
         }
     }
     &_my-img {
         margin-right: 25px;
-
+        margin-top: -25px;
         img{
-            width: 170px;
+        width: 170px;
         height: 170px;
         border-radius: 50%;
+        border:10px solid white;
         }
         
     }
