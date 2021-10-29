@@ -4,11 +4,17 @@ import ProfileInforCard from '@/components/Profile/ProfileInforCard.vue'
 import ProfileNavBtn from '@/components/Profile/ProfileNavBtn.vue'
 import ProfileNavContent from '@/components/Profile/ProfileNavContent.vue'
 
+import ProfileDashboard from '@/components/Profile/ProfileDashboard.vue'
+import ProfileVistors from '@/components/Profile/ProfileVistors.vue'
+import ProfileCourse from '@/components/Profile/ProfileCourse.vue'
 export default {
     components: {
         ProfileInforCard,
         ProfileNavBtn,
-        ProfileNavContent
+        ProfileNavContent,
+        ProfileDashboard,
+        ProfileVistors,
+        ProfileCourse
     }
 }
 </script>
@@ -20,7 +26,9 @@ export default {
       <ProfileNavContent/>
     </div>
     <div class="right-area">
-
+      <ProfileDashboard/>
+      <ProfileVistors/>
+      <ProfileCourse/>
     </div>
   </div>
 </template>

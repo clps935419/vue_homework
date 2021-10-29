@@ -33,13 +33,10 @@ export default {
         },
         //評論區增加留言
         addPost(state, data) {
-            console.log('dadta-', data);
             state.postArr.forEach((item) => {
-                console.log('----', item.name, data.postUser);
 
                 if (item.name === data.postUser) {
                     item.comment.push(data);
-                    console.warn('it', item.comment);
                 }
             });
         },
@@ -53,11 +50,9 @@ export default {
                 }
             });
             state.postArr = sortArr;
-            console.warn('陣列', state.postArr);
         },
         //增加貼文
         postArrAdd(state, data) {
-            console.warn('增加',data)
             const tmpData = {
                 name: 'Leonard',
                 infor: 'IOS developer',
@@ -99,7 +94,6 @@ export default {
     },
     getters: {
         postArr(state) {
-            console.log('getter', state.postArr);
             return state.postArr;
         },
     },

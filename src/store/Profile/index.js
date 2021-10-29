@@ -49,7 +49,6 @@ export default {
         setActive(state, data) {
             state.navList = state.navList.map((item) => {
                 item.isActive = false;
-                console.log('data', data.name, item.name);
                 if (item.name === data.name) {
                     item.isActive = true;
                 }
@@ -65,7 +64,6 @@ export default {
     },
     getters: {
         getNavList(state) {
-            console.log('**', state.navList);
             return state.navList;
         },
         getNavListContent(state) {

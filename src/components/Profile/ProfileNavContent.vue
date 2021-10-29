@@ -9,11 +9,9 @@ export default {
         });
         const headerNum = computed(()=>{
             return (arr)=>{
-                console.log('arr',arr);
                 return arr.length > 3 ? `3 of ${arr.length}`:`${arr.length}of ${arr.length}`;
             }
         })
-        console.log('www',navContent);
         return{
             navContent,
             headerNum
