@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath:'vue_homework',
+    publicPath:'/vue_homework/',
     //配置axios跨域請求
     devServer: {
         proxy: {
