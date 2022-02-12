@@ -1,4 +1,4 @@
-<a href="https://clps935419.github.io/vue_homework/feed">DEMO網址</a>
+<a href="https://clps935419.github.io/vue_homework/">DEMO網址</a>
 # my-project
 
 ## Project setup
