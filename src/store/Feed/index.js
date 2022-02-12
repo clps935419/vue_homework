@@ -1,4 +1,5 @@
 import axios from "axios";
+import { apiFeedData } from "../../api";
 export default {
     namespaced: true,
     state: {
@@ -66,15 +67,10 @@ export default {
         },
     },
     actions: {
-        handleInit(context, data) {
-            return axios
-                .get('/api/my_api/feed_json.json')
-                .then(function(response) {
-                    console.log('res', response);
-                    // handle success
-                    context.commit('init', response.data);
-                    return response.data;
-                });
+        async handleInit(context, data) {
+            const res = await apiFeedData();
+            context.commit('init', res.data);
+            return res.data;
         },
         handleThumbAdd(context, data) {
             context.commit('addThumb', data);

@@ -6,6 +6,7 @@ import Jobs from '@/views/Jobs.vue';
 import Chats from '@/views/Chats.vue';
 import Notices from '@/views/Notices.vue';
 import NotFoundComponent from '@/views/NotFoundComponent.vue';
+import Login from '@/views/Login.vue';
 const routes = [
     {
         path: '/', //代表首頁
@@ -42,7 +43,12 @@ const routes = [
         component: NotFoundComponent,
         name: 'NotFound',
     },
-    
+    {
+        path: '/login',
+        name: 'login',
+        component: Login,
+    },
+
     // {
     //     path: '/about',
     //     name: 'About',
